@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><OutputType>Exe</OutputType><TargetFramework>net8.0</TargetFramework><ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable></PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.1.66" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.3" />
+    <Compile Include="../common/ConsoleInput.cs" Link="ConsoleInput.cs" />
+    <Compile Include="../common/Passwords.cs" Link="Passwords.cs" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,17 @@
+[Unit]
+Description=MyStat Mood Journal bot
+After=network-online.target postgresql.service
+Wants=network-online.target
+Requires=postgresql.service
+
+[Service]
+User=ubuntu
+WorkingDirectory=/opt/mystat/mystat/2026-07-aws-final
+EnvironmentFile=/etc/mystat/mood.env
+ExecStart=/opt/mystat/mystat/2026-07-aws-final/.venv/bin/python bot.py
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

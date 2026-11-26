@@ -1,0 +1,25 @@
+enable
+configure terminal
+hostname SW1
+vlan 10
+ name CLASS
+exit
+vlan 20
+ name WORKSHOP
+exit
+interface range FastEthernet0/1 - 2
+ switchport mode access
+ switchport access vlan 10
+ spanning-tree portfast
+exit
+interface range FastEthernet0/3 - 4
+ switchport mode access
+ switchport access vlan 20
+ spanning-tree portfast
+exit
+interface FastEthernet0/24
+ switchport mode trunk
+ switchport trunk allowed vlan 10,20
+exit
+end
+write memory

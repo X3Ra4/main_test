@@ -1,0 +1,16 @@
+[Unit]
+Description=MyStat Telegram demo
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=ubuntu
+WorkingDirectory=/opt/mystat/mystat/2026-06-aws-telegram
+EnvironmentFile=/etc/mystat/telegram.env
+ExecStart=/usr/bin/python3 bot.py
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
