@@ -1,0 +1,23 @@
+<!doctype html><html lang="uk"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Нотатки</title><style>body{font:18px system-ui;max-width:840px;margin:48px auto;padding:0 20px;color:#123d34;background:#f4f6ef}li{padding:12px}button{font:inherit;padding:8px}</style>
+<h1>Нотатки</h1><button id="reload">Оновити</button><p id="status" role="status"></p><ul id="notes"></ul>
+<script>
+  const list = document.querySelector('#notes');
+  const status = document.querySelector('#status');
+  async function load() {
+    status.textContent = 'Завантаження…';
+    try {
+      const response = await fetch('/api/notes');
+      if (!response.ok) throw new Error(response.status);
+      const data = await response.json();
+      list.replaceChildren(...data.map(note => {
+        const row = document.createElement('li');
+        row.textContent = note.title + ': ' + note.body;
+        return row;
+      }));
+      status.textContent = data.length ? '' : 'Нотаток немає.';
+    } catch { status.textContent = 'API недоступний. Повторіть спробу.'; }
+  }
+  document.querySelector('#reload').addEventListener('click', load);
+  load();
+</script></html>

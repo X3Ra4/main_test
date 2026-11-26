@@ -1,0 +1,17 @@
+* { box-sizing: border-box; }
+body { margin: 0; background: #eef4ed; color: #19372f; font: 16px/1.55 system-ui, sans-serif; }
+header, footer { padding: 1rem max(1rem, calc((100% - 64rem)/2)); background: #143e35; color: white; }
+nav { display: flex; flex-wrap: wrap; gap: .9rem; }
+nav a { color: inherit; }
+main { width: min(100% - 2rem, 64rem); margin: 2rem auto; min-height: 70vh; }
+a { color: #0d6a56; }
+article, table { background: white; padding: 1rem; border-radius: .7rem; }
+table { width: 100%; border-collapse: collapse; text-align: left; }
+th, td { padding: .6rem; border-bottom: 1px solid #cfdfd4; }
+.cancelled { color: #6a6a6a; text-decoration: line-through; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr)); gap: .75rem; }
+.skill { display: inline-block; border-radius: .5rem; padding: .1rem .4rem; color: #161816; }
+.advanced { background: #a4dfb4; }.intermediate { background: #ffe0a3; }.beginner { background: #bcd8f3; }
+label { display: inline-block; margin: .3rem; }
+input, textarea, select, button { font: inherit; max-width: 100%; }
+button { border: 0; border-radius: .45rem; color: white; background: #15634f; padding: .45rem .8rem; cursor: pointer; }

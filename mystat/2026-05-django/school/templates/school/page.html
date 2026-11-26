@@ -1,0 +1,16 @@
+{% extends "school/base.html" %}
+{% block content %}
+<h1>{{ title }}</h1>{% if intro %}<p>{{ intro }}</p>{% endif %}
+{% if detail %}<p>{{ detail }}</p>{% endif %}
+{% if contact %}<p><a href="{{ contact }}">Профіль GitHub</a></p>{% endif %}
+{% if skills %}<h2>Навички</h2>
+<ul>{% for label, level in skills %}<li>{{ label }} <span class="skill {{ level }}">{{ level }}</span></li>{% endfor %}</ul>{% endif %}
+{% if projects %}<div class="cards">{% for item in projects %}<article><h2><a href="{% url 'project' item.id %}">{{ item.name }}</a></h2><p>{{ item.summary }}</p><p>{{ item.year }} · {{ item.state }}</p></article>{% endfor %}</div>{% endif %}
+{% if days %}<ul>{% for slug, day in days %}<li><a href="{% url 'schedule-day' slug %}">{{ day }}</a></li>{% endfor %}</ul>{% endif %}
+{% if week %}{% for day, lessons in week %}<section><h2>{{ day }}</h2>
+{% if lessons %}<table><thead><tr><th>№</th><th>Предмет</th><th>Час</th><th>Аудиторія</th></tr></thead><tbody>
+{% for item in lessons %}<tr{% if item.is_cancelled %} class="cancelled"{% endif %}><td>{{ forloop.counter }}</td><td><a href="{% url 'lesson' item.pk %}">{{ item.subject }}</a>{% if item.is_cancelled %} · скасовано{% endif %}</td><td>{{ item.starts_at|time:"H:i" }}</td><td>{{ item.room }}</td></tr>{% endfor %}
+</tbody></table>{% else %}<p>Вихідний</p>{% endif %}</section>{% endfor %}{% endif %}
+{% if lesson %}<dl><dt>Викладач</dt><dd>{{ lesson.teacher }}</dd><dt>Час</dt><dd>{{ lesson.starts_at|time:"H:i" }}</dd><dt>Аудиторія</dt><dd>{{ lesson.room }}</dd><dt>Нотатки</dt><dd>{{ lesson.notes|default:"—" }}</dd></dl>{% endif %}
+{% if teachers %}<ul>{% for teacher in teachers %}<li>{{ teacher.name }} · {{ teacher.subjects|join:", " }} · {{ teacher.count }} пар</li>{% endfor %}</ul>{% endif %}
+{% endblock %}

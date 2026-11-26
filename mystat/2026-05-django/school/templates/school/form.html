@@ -1,0 +1,6 @@
+{% extends "school/base.html" %}
+{% block content %}
+{% if form.fields %}<h1>{% if object %}Редагувати запис{% else %}Додати запис{% endif %}</h1>
+{% else %}<h1>Видалити запис</h1><p>{{ object }}</p>{% endif %}
+<form method="post">{% csrf_token %}{{ form.as_p }}<button>{% if form.fields %}Зберегти{% else %}Підтвердити видалення{% endif %}</button></form>
+{% endblock %}

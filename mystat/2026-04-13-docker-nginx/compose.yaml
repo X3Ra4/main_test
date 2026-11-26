@@ -1,0 +1,8 @@
+services:
+  nginx:
+    image: nginx:1.28-alpine
+    ports:
+      - "127.0.0.1:8080:80"
+    volumes:
+      - ./conf:/etc/nginx/conf.d:ro
+      - ./sites:/var/www:ro

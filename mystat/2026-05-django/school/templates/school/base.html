@@ -1,0 +1,12 @@
+{% load static %}
+<!doctype html>
+<html lang="uk">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{ title|default:"Навчальні проєкти" }}</title><link rel="stylesheet" href="{% static 'school/style.css' %}"></head>
+<body><header><nav aria-label="Головна навігація">
+<a href="{% url 'portfolio' %}">Головна</a><a href="{% url 'projects' %}">Проєкти</a>
+<a href="{% url 'contacts' %}">Контакти</a><a href="{% url 'schedule-home' %}">Розклад</a>
+<a href="{% url 'schedule-week' %}">Тиждень</a><a href="{% url 'teachers' %}">Викладачі</a>
+<a href="{% url 'library:book-list' %}">Бібліотека</a><a href="{% url 'library:review-list' %}">Відгуки</a>
+</nav></header><main>{% block content %}{% endblock %}</main>
+<footer>Навчальні проєкти з Django · 2026</footer></body></html>

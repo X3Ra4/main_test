@@ -1,0 +1,17 @@
+{% extends "school/base.html" %}
+{% block content %}
+<h1>{{ title }}</h1>
+<form method="get">
+<label>Пошук <input type="search" name="q" value="{{ request.GET.q }}"></label>
+{% if prefix == "book" %}<label>Жанр <input name="genre" value="{{ request.GET.genre }}"></label>{% endif %}
+<button>Знайти</button>
+</form>
+{% with add_route="library:"|add:prefix|add:"-add" detail_route="library:"|add:prefix|add:"-detail" %}
+<p><a href="{% url add_route %}">Додати запис</a></p>
+<div class="cards">{% for item in object_list %}<article><h2><a href="{% url detail_route item.pk %}">{{ item }}</a></h2>
+{% if prefix == "book" %}<p>{{ item.author }} · {{ item.genre }}</p>{% else %}<p>{{ item.score }}/5</p>{% endif %}</article>
+{% empty %}<p>Записів не знайдено.</p>{% endfor %}</div>{% endwith %}
+{% if is_paginated %}<p>Сторінка {{ page_obj.number }} з {{ paginator.num_pages }}.
+{% if page_obj.has_previous %}<a href="?{{ filter_query }}&amp;page={{ page_obj.previous_page_number }}">Назад</a>{% endif %}
+{% if page_obj.has_next %}<a href="?{{ filter_query }}&amp;page={{ page_obj.next_page_number }}">Далі</a>{% endif %}</p>{% endif %}
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "school/base.html" %}
+{% block content %}
+<h1>{{ object }}</h1>
+{% if prefix == "book" %}
+<p>{{ object.author }} · {{ object.genre }}</p>
+<p>{{ object.summary }}</p>
+<h2>Відгуки</h2><ul>{% for review in object.reviews.all %}<li><a href="{% url 'library:review-detail' review.pk %}">{{ review.reader }}</a> · {{ review.score }}/5</li>{% empty %}<li>Відгуків ще немає.</li>{% endfor %}</ul>
+{% else %}
+<p>Оцінка {{ object.score }}/5</p><p>{{ object.text }}</p>
+<p><a href="{% url 'library:book-detail' object.book.pk %}">{{ object.book }}</a></p>
+{% endif %}
+{% with edit_route="library:"|add:prefix|add:"-edit" delete_route="library:"|add:prefix|add:"-delete" %}
+<p><a href="{% url edit_route object.pk %}">Редагувати</a> · <a href="{% url delete_route object.pk %}">Видалити</a></p>
+{% endwith %}
+{% endblock %}
