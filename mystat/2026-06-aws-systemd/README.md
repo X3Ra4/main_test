@@ -1,5 +1,5 @@
 # Автозапуск на EC2
-Для Ubuntu EC2 із Docker Engine та Compose клонувати репозиторій у `/opt/mystat`; потрібен доступ до приватного репозиторію. Встановити `mystat-notes.service` до `/etc/systemd/system/` та запустити:
+Для Ubuntu EC2 із Docker Engine та Compose клонувати публічний репозиторій у `/opt/mystat`. Встановити `mystat-notes.service` до `/etc/systemd/system/` та запустити: Команда: `sudo git clone https://github.com/X3Ra4/main_test.git /opt/mystat`.
 ```bash
 sudo systemctl daemon-reload
 sudo systemctl enable --now mystat-notes
