@@ -1,0 +1,13 @@
+{
+  "expo": {
+    "name": "reading-shelf",
+    "slug": "reading-shelf",
+    "scheme": "reading-shelf",
+    "web": {
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-router"
+    ]
+  }
+}
