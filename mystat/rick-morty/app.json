@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "rick-morty",
+    "slug": "rick-morty",
+    "scheme": "rick-morty",
+    "web": {
+      "bundler": "metro"
+    }
+  }
+}

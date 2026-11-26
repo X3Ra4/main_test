@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "todo-list",
+    "slug": "todo-list",
+    "scheme": "todo-list",
+    "web": {
+      "bundler": "metro"
+    }
+  }
+}

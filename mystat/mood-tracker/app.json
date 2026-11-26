@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "mood-tracker",
+    "slug": "mood-tracker",
+    "scheme": "mood-tracker",
+    "web": {
+      "bundler": "metro"
+    }
+  }
+}
